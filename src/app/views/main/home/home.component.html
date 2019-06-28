@@ -1,0 +1,66 @@
+<div padding class="background" style="color: #4B5B6A; font-family: Roboto Slab; font-size: 8.67px; font-weight: 400; line-height: 11px">
+  <div class="text-center">
+    <img src="assets/images/logo1.png" style="height: 26px;">
+  </div>
+  <div class="title">Happening Now</div>
+  <div class="border-top" *ngIf="fNow === 1">
+    <div style="margin-top: 8px;">
+      <ion-slides pager="false" [options]="slideOpts" *ngFor="let nowEvent of nowEvents">
+          <ion-slide routerLink="/main/event/{{nowEvent.id}}">
+            <div class="padding">
+              <div style="height: 150px;"><img src="{{base_url}}{{nowEvent.image}}"></div>
+              <div class="border" style="margin-top: 8px; font-size: 8px;">{{nowEvent.startTime.substring(nowEvent.startTime.length - 8)}} ~ {{nowEvent.endTime.substring(nowEvent.endTime.length - 8)}}</div>
+            </div>
+          </ion-slide>
+        </ion-slides>
+    </div>
+  </div>
+  <div class="border-top" *ngIf="fNow === 0" style="padding-top: 12px;">
+    <div class="title" style="text-align: center; padding: 24px 0;">
+      No events
+    </div>
+  </div>
+  <div class="border-top space-top-12">
+    <div class="title" style="margin-top: 4px;">Event of the Week</div>
+    <div style="margin-top: 4px;">
+      <div style="text-align: center;">
+        <label style="text-align: right;">Sponsorship</label><br/>
+        <img src="assets/images/sponsorship.png" style="height: 240px;">
+      </div>
+    </div>
+    <div style="width: 40%; text-align: center; padding: 4px 0; margin: 0 auto; background-color: #FFFFFF; border: 3.33px solid #976DD0;" routerLink="/main/getticket">Get Tickets</div>
+  </div>
+
+  <div class="border-top space-top-12">
+    <div class="title" style="margin-top: 4px;">News Feed</div>
+    <div *ngIf="fNews === 0" class="title" style="padding-top: 24px; text-align: center;">
+      Subscribe to new organizations
+    </div>
+    <div *ngIf="fNews === 1">
+      <div style="margin-top: 12px;" *ngFor="let item of news">
+        <div style="float: left;" class="purple">{{item.user_name}}</div>
+        <div style="float: right; width: 10%;"><img src="assets/images/select.png" style="opacity: .42;"  routerLink="/main/event/{{item.id}}"></div>
+        <img src="{{base_url}}{{item.image}}">
+        <div class="flex-item-center">
+          <div style="width: 85%;" class="flex-item-center">
+            <img src="assets/images/hand.png" class="image-item" (click)="onLike(item.id);">
+            <img src="assets/images/message.png" class="image-item" style="margin: 0 18px;" (click)="onComment(item.id);">
+            <img src="assets/images/plus.png" class="image-item" (click)="onAddEvent(item.id);">
+          </div>
+          <div class="flex-item-center">
+            <div style="background-image: url(assets/images/captummre.png); width: 75px; height: 50px; background-size: cover; padding-top: 15px; padding-left: 8px; padding-bottom: 4px;" class="flex-item-center">
+              <div style="width: 30%;" class="flex-item-center"><img src="assets/images/hand.png"></div>
+              <div style="margin: 0 auto;"><label style="font-size: 24px;">{{item.count}}</label></div>
+            </div>
+          </div>
+        </div>
+        <div>{{item.desc}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="is_comment === 1" style="position: fixed; bottom: 24px; width: calc(100% - 32px); z-index: 999;">
+    <ion-input padding [(ngModel)]="comment"></ion-input>
+    <ion-button size="small" style="float: right;" (click)="onAddComment();">Comment</ion-button>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="flex-item-center" style="border-bottom: 1px solid gray;">
+
+  <h5 style="text-align: center; width: 84%; color: #673ab7;">STUDENT ACCOUNT</h5>
+</div>
+<div padding>
+  <div style="width: 30%; margin: 0 auto;">
+    <img src="{{ profile }}">
+  </div>
+  <div style="text-align: center;">
+  <label style="text-decoration: underline;">Upload Picture
+    <ion-input type="file" name="file" hidden (change)="uploadFile($event)"></ion-input>
+  </label>
+  </div>
+  <div>
+    <ion-label>Bio</ion-label>
+    <ion-textarea rows="8" style="border: 1px solid gray;" [(ngModel)]="bio"></ion-textarea>
+  </div>
+  <div style="margin-top: 8px;">
+    <ion-label>Change Username</ion-label>
+    <ion-input [(ngModel)]="username"></ion-input>
+  </div>
+  <div style="margin-top: 8px;">
+    <ion-label>Email</ion-label>
+    <ion-input [(ngModel)]="email"></ion-input>
+  </div>
+  <div style="margin-top: 8px;">
+    <ion-label>Password</ion-label>
+    <ion-input [(ngModel)]="password" type="password"></ion-input>
+  </div>
+  <div style="margin-top: 8px;">
+    <ion-label>University</ion-label>
+    <ion-select [(ngModel)]="univer">
+      <ion-select-option  *ngFor="let item of university" value="{{ item.id }}">{{ item.name }}</ion-select-option>
+    </ion-select>
+  </div>
+
+</div>

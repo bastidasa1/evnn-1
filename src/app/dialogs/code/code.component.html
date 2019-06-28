@@ -1,0 +1,7 @@
+<div style="display: flex; align-items: center; min-height: calc(100vh - 60px);">
+  <div padding style="width: 100%;">
+    <ion-input [(ngModel)]="num"></ion-input>
+    <ion-button color="tertiary" expand="full" (click)="onVerify();">Verify</ion-button>
+    <ion-button color="light" expand="full" (click)="this.modal.dismiss();">Cancel</ion-button>
+  </div>
+</div>

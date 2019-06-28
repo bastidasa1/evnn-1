@@ -1,0 +1,77 @@
+<div padding>
+  <div>
+    <img src="{{base_url}}{{event.image}}" style="width: 100%; height: 50vh;">
+  </div>
+  <div>
+    <div class="flex-item-center">
+      <div style="width: 85%;" (click)="onLike()">
+        <img src="assets/images/hand.png" class="image-item">
+      </div>
+      <div class="flex-item-center">
+        <div style="background-image: url(assets/images/captummre.png); width: 75px; height: 50px; background-size: cover; padding-top: 15px; padding-left: 8px; padding-bottom: 4px;" class="flex-item-center">
+          <div style="width: 30%;" class="flex-item-center"><img src="assets/images/hand.png" style="opacity: .4"></div>
+          <div style="margin: 0 auto;"><label style="color: #343B41; font-family: Bree Serif; font-size: 21.67px; font-weight: 400; line-height: 28px; opacity: 0.85; text-align: left;">{{ count }}</label></div>
+        </div>
+      </div>
+    </div>
+    <div style="color: gray; color: #47525E; font-family: Roboto Slab; font-size: 8.67px; font-weight: 400; line-height: 11px;">
+      {{ event.desc }}
+    </div>
+    <div style="border: 1px solid black; padding: 4px; color: #47525E; font-family: Roboto Slab; font-size: 8.67px; font-weight: 700; line-height: 11px;  margin-top: 12px;">
+      <div style="display: flex; align-items: center; margin-top: 12px;">
+        <div style="width: 30%;"></div>
+        <div style="width: 30%; border-bottom: 1px solid black;">Sale Ends</div>
+        <div style="width: 15%; border-bottom: 1px solid black;">Price</div>
+        <div style="width: 25%; border-bottom: 1px solid black;">Quantity</div>
+      </div>
+      <div style="display: flex; align-items: center; margin-top: 8px;">
+        <div style="width: 30%;">Early Bird</div>
+        <div style="width: 30%; color: #47525E; font-weight: 400;">{{early}}</div>
+        <div style="width: 15%; color: #47525E; font-weight: 400;">${{early_price}}</div>
+        <div *ngIf="eflag === false" style="width: 25%; color: #47525E; font-weight: 400;">Sale Ended</div>
+        <div *ngIf="eflag === true" style="width: 25%; color: #47525E; font-weight: 400;">
+          <ion-select placeholder="Select Count" class="space-top-12" [(ngModel)]="early_count" (ionChange)="onChange();">
+            <ion-select-option value="1">1</ion-select-option>
+            <ion-select-option value="2">2</ion-select-option>
+            <ion-select-option value="3">3</ion-select-option>
+            <ion-select-option value="4">4</ion-select-option>
+            <ion-select-option value="5">5</ion-select-option>
+            <ion-select-option value="6">6</ion-select-option>
+            <ion-select-option value="7">7</ion-select-option>
+            <ion-select-option value="8">8</ion-select-option>
+          </ion-select>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; margin-top: 8px;">
+        <div style="width: 30%;">General Admission</div>
+        <div style="width: 30%; color: #47525E; font-weight: 400;">{{admission}}</div>
+        <div style="width: 15%; color: #47525E; font-weight: 400;">${{admission_price}}</div>
+        <div *ngIf="aflag === false" style="width: 25%; color: #47525E; font-weight: 400;">Sale Ended</div>
+        <div *ngIf="aflag === true" style="width: 25%; color: #47525E; font-weight: 400;">
+          <ion-select placeholder="Select Count" [(ngModel)]="admission_count" (ionChange)="onChange();">
+            <ion-select-option value="1">1</ion-select-option>
+            <ion-select-option value="2">2</ion-select-option>
+            <ion-select-option value="3">3</ion-select-option>
+            <ion-select-option value="4">4</ion-select-option>
+            <ion-select-option value="5">5</ion-select-option>
+            <ion-select-option value="6">6</ion-select-option>
+            <ion-select-option value="7">7</ion-select-option>
+            <ion-select-option value="8">8</ion-select-option>
+          </ion-select>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; margin-top: 8px;">
+        <div style="width: 30%;">Fees & Taxes</div>
+        <div style="width: 30%;"></div>
+        <div style="width: 15%; color: #47525E; font-weight: 400;">${{fee}}</div>
+        <div style="width: 25%;"></div>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; float: right; margin-top: 8px;">
+      <div style="color: #47525E; font-family: Roboto Slab; font-size: 11.33px; font-weight: 700; line-height: 14.67px;">Total Price: </div>
+      <div style="border: 0.67px solid #969FAA; padding: 8px; margin-left: 16px; color: rgba(71, 82, 94, 0.88); font-family: Roboto Slab; font-size: 10.67px; font-weight: 400; line-height: 13.67px;">${{total}}</div>
+    </div>
+    <img src="assets/images/paypal.png" style="width: 30%; float: right; clear:right; margin-top: 8px;" (click)="onGetTicket();">
+    <div style="clear: right;"></div>
+  </div>
+</div>

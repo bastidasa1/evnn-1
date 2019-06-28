@@ -1,0 +1,40 @@
+<div style="color: #47525E; font-family: Roboto Slab; font-size: 10.33px; font-weight: 400; line-height: 13.33px; text-align: left;">
+  <div class="flex-item-center" style="border-bottom: 1px solid gray; padding-top: 8px; padding-bottom: 4px;">
+    <label style="text-align: center; width: 100%; font-size: 10.33px; line-height: 13.33px;">{{name}}</label>
+  </div>
+  <div class="flex-item-center">
+    <div style="width: 60%;">
+      <div text-center><label style="font-size: 9.33px; line-height: 12px;">{{name}}</label></div>
+      <div>
+        <div text-center><label style="color: #47525E; font-size: 50px; font-weight: 700; line-height: 41px;">{{connections}}</label></div>
+        <div text-center style="font-size: 8.67px; line-height: 11px;">Connections</div>
+      </div>
+    </div>
+    <div style="width: 40%;">
+      <div style="padding: 12px;"><img src="{{profileUrl}}{{profile}}" style="border-radius: 100%;"></div>
+      <div class="flex-item-center" style="color: #FFFFFF; font-family: Ubuntu; font-size: 8.67px; font-weight: 400; line-height: 11px; padding: 0 16px;">
+
+        <div style="width: 100%;" *ngIf="type === 1 && user.account_type === 1">
+          <div *ngIf="isConnected === false" style="padding: 4px 16px; color: white; background-color: #520971; border-radius: 20px;" text-center (click)="onConnect();">Connect</div>
+          <div *ngIf="isConnected === true && isApproved" style="padding: 4px 16px; color: white; background-color: #520971d8; border-radius: 20px;" text-center (click)="onConnect();">Connected</div>
+          <div *ngIf="isConnected === true && !isApproved" style="padding: 4px 16px; color: white; background-color: #520971d8; border-radius: 20px;" text-center (click)="onConnect();">Pending</div>
+        </div>
+        <div style="width: 100%;" *ngIf="type == 2">
+          <div *ngIf="isSubscribed === false" style="padding: 4px 16px; color: white; background-color: #520971; border-radius: 20px;" text-center (click)="onSubscribe();">Subscribe</div>
+          <div *ngIf="isSubscribed === true" style="padding: 4px 16px; color: white; background-color: #520971d8; border-radius: 20px;" text-center (click)="onSubscribe();">Subscribed</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding: 8px 16px;color: #47525E; font-family: Ubuntu; font-size: 9px; font-weight: 400; line-height: 11.67px;"><ion-textarea readonly [(ngModel)]="bio" style="border: 1px solid gray; padding: 4px; padding-top: 0 !important;"></ion-textarea></div>
+  <div class="flex-div">
+    <div style="width: 100%; border: 1px solid black; padding: 8px; color: #47525E; font-family: Montserrat; font-size: 10px; font-weight: 400; line-height: 13px; text-align: left;" text-center>Events</div>
+  </div>
+  <div style="display: flex; margin-top: 12px; justify-content: space-between; flex-flow: row wrap; padding: 0 4px;">
+    <div *ngFor="let event of events" style="width: 30%;">
+      <div style="text-align: center; border: 1px solid gray; color: #47525E; font-size: 9px; line-height: 11.67px;"><label>{{ event.day }}</label></div>
+      <img src="{{imgUrl}}{{event.image}}" style="width: 100%; height: 130px;">
+    </div>
+  </div>
+</div>

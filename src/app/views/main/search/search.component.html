@@ -1,0 +1,34 @@
+<div style="color: #30373D; font-family: Roboto Slab; font-size: 10.33px; font-weight: 400; line-height: 13.33px;">
+  <ion-searchbar [(ngModel)]="skey" (ionChange)="onInput($event)"></ion-searchbar>
+  <div *ngIf="flag === 0" style="padding-left: 8px;">No mathces</div>
+  <div *ngIf="flag === 1">
+    <label style="margin-left: 8px;">People you might know</label>
+    <ion-slides [options]="slideOpts2">
+      <ion-slide *ngFor="let topUser of topUsers">
+        <div style="width: 100%;" routerLink="/main/oprofile/{{topUser.id}}">
+          <img src="{{base_profile_url}}{{topUser.profile}}" style="padding: 8px; border-radius: 100%; height: 80px;">
+          <div style="color: #47525E; font-size: 8.33px; line-height: 10.67px;text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">{{topUser.name}}</div>
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </div>
+  <div style="margin-top: 12px;">
+    <label style="margin-left: 8px;">Top recommended</label>
+    <div style="border: 1px solid gray; margin-top: 8px;">
+      <ion-slides [options]="slideOpts" style="margin: 8px 0;">
+        <ion-slide *ngFor="let topEvent of topEvents">
+          <div style="width: 100%;">
+            <div style="width: 100%; padding-left: 5%; text-align: left; color: #47525E; font-family: Bree Serif; font-size: 12px; font-weight: 400; line-height: 15.33px;">{{topEvent.id}}</div>
+            <div style="height: 160px;"><img src="{{base_flyer_url}}{{topEvent.image}}" style="width: 80%;"routerLink="/main/event/{{topEvent.event_id}}"></div>
+          </div>
+        </ion-slide>
+      </ion-slides>
+    </div>
+  </div>
+  <div style="margin-top: 12px;">
+    <label style="margin-left: 8px; font-size: 11.67px; line-height: 15px;">Explore New Events</label>
+    <div class="flex-div" style="justify-content: space-between; flex-direction: column; flex-wrap: wrap;" [ngStyle]="{'height': height}">
+        <img *ngFor="let newEvent of newEvents" src="{{base_flyer_url}}{{newEvent.image}}" style="width: 49%; max-height: 200px; padding: 8px;" routerLink="/main/event/{{newEvent.id}}">
+    </div>
+  </div>
+</div>

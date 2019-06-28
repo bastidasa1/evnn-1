@@ -1,0 +1,30 @@
+<div padding style="font-family: Roboto Slab; font-size: 11.33px;">
+  
+  <div style="width: 60%; margin: 0 auto; background-color: #d2f7d2; border-radius: 24px;" padding>
+    <div style="text-align: center;">
+      <label style="color: purple; font-size: 166px; font-weight: 900;">+
+        <ion-input type="file" name="file" hidden (change)="uploadFile($event)"></ion-input>
+      </label>
+    </div>
+    <div style="text-align: center; color: #5A6978; font-family: Montserrat; font-size: 20px; font-weight: 400; line-height: 26px;">Upload Flyer</div>
+  </div>
+  <ion-item>
+    <ion-label style="color: #47525E; font-family: Roboto Slab; font-size: 11.33px; font-weight: 400; line-height: 14.67px;">Date</ion-label>
+    <ion-datetime display-format="MM/DD/YY" style="font-size: 12px; line-height: 15.33px; border: 1px solid gray; border-radius: 8px; padding: 4px;" placeholder="Pick date" [(ngModel)]="date"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label style="color: #47525E; font-family: Roboto Slab; font-size: 11.33px; font-weight: 400; line-height: 14.67px;">Time From:</ion-label>
+    <ion-datetime displayFormat="HH:mm" placeholder="Pick time" style="font-size: 12px; line-height: 15.33px; border: 1px solid gray; border-radius: 8px; padding: 4px;" [(ngModel)]="timefrom"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label style="color: #47525E; font-family: Roboto Slab; font-size: 11.33px; font-weight: 400; line-height: 14.67px;">Time To:</ion-label>
+    <ion-datetime displayFormat="HH:mm" placeholder="Pick time" style="font-size: 12px; line-height: 15.33px; border: 1px solid gray; border-radius: 8px; padding: 4px;" [(ngModel)]="timeto"></ion-datetime>
+  </ion-item>
+  <div style="margin-top: 12px;">
+    <ion-label>Event Description</ion-label>
+    <ion-textarea style="border: 1px solid gray; border-radius: 8px; padding: 4px;" rows="6" [(ngModel)]="description"></ion-textarea>
+  </div>
+  <div style="font-size: 16px; line-height: 20.67px; background-color: #bb69b5; color: white; width: 60%; text-align: center; margin: 0 auto; padding: 8px; margin-top: 24px;" (click)="onSubmit();">
+    Submit
+  </div>
+</div>

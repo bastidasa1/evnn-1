@@ -1,0 +1,24 @@
+<div style="color: #47525E; font-family: Roboto Slab; font-size: 12.67px; font-weight: 400; line-height: 16.33px;">
+  <div style="padding-top: 24px;padding-left: 12px;padding-bottom: 4px;border-bottom: 1px solid gray;">
+    Notifications
+  </div>
+  <div padding *ngFor="let connection of connections">
+    <div class="flex-item-center">
+      <img src="{{profile_url}}{{connection.profile}}" style="width: 20%; border-radius: 100%;">
+      <div style="width: 55%; text-align: center; font-size: 10px; line-height: 13px;">{{connection.user_name}} asked to connect!</div>
+      <div class="link-item" style="width: 25%; font-size: 10px; line-height: 13px;" (click)="onAccept(connection.user_id);">Accept</div>
+    </div>
+  </div>
+  <div padding *ngFor="let log of logs">
+    <div class="flex-item-center">
+      <img src="{{profile_url}}{{log.profile}}" style="width: 20%; border-radius: 100%;">
+      <div style="width: 80%; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; font-size: 10px; line-height: 13px;">{{log.name}} and you are now connected.</div>
+    </div>
+  </div>
+  <div padding *ngFor="let history of historys">
+    <div class="flex-item-center">
+      <div style="width: 80%; font-size: 10px; line-height: 13px;">{{history.user_name}} and {{history.count}} people like this event!.</div>
+      <img src="{{flyer_url}}{{history.event_image}}" style="width: 20%;" routerLink="/main/event/{{history.value2}}">
+    </div>
+  </div>
+</div>

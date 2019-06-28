@@ -1,0 +1,22 @@
+<div padding style="font-family: Ubuntu; font-size: 9.67px; font-weight: 400; line-height: 11px">
+  <div class="text-center">
+    <img src="../../../assets/images/logo1.png" style="height: 33px; margin: 12px 0;">
+  </div>
+  <div>
+    <ion-select placeholder="Account Type" class="space-top-12" [(ngModel)]="account_type">
+      <ion-select-option value="1">Student</ion-select-option>
+      <ion-select-option value="2">Organization</ion-select-option>
+    </ion-select>
+    <ion-select placeholder="University" class="space-top-12" [(ngModel)]="university_id">
+      <ion-select-option *ngFor="let item of university" value="{{ item.id }}">{{ item.name }}</ion-select-option>
+    </ion-select>
+    <ion-input class="space-top-12" placeholder="Full Name" [(ngModel)]="name" style="padding-left: 8px !important;"></ion-input>
+    <ion-input class="space-top-12" placeholder="User Name" [(ngModel)]="username" style="padding-left: 8px !important;"></ion-input>
+    <ion-input class="space-top-12" placeholder="University Email" [(ngModel)]="email" style="padding-left: 8px !important;"></ion-input>
+    <ion-input class="space-top-12" placeholder="Password" [(ngModel)]="password" type="password" style="padding-left: 8px !important;"></ion-input>
+  </div>
+  <div class="link-item center" style="margin-top: 24px; width: 60%; color: #FFFFFF; font-family: Ubuntu; font-size: 13.33px; font-weight: 400; line-height: 17.33px;" (click)="onSignin();">
+    Sign in
+  </div>
+  <div class="space-top-12 text-center" style="color: rgba(71, 82, 94, 0.71); font-family: Ubuntu; font-size: 9.33px; font-weight: 400; line-height: 10.67px;">By signing up, you are agree to our Terms and Privacy Policy</div>
+</div>
