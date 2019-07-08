@@ -30,7 +30,7 @@ export class GetticketComponent implements OnInit {
   paymentAmount: string = '3.33';
   currency: string = 'USD';
   currencyIcon: string = '$';
-  event_id: number = 7;
+  event_id: number;
   user: IUser;
 
   early: string;
@@ -52,26 +52,7 @@ export class GetticketComponent implements OnInit {
     this.user = this.loginService.currentUserValue;
 
     let formData = new FormData();
-    formData.append("id", this.event_id.toString());
-
-    this.eventService.sendRequest(formData, 'get').subscribe(
-      (response) => {
-        console.log(response);
-        this.event = {
-					id: response['event']['id'],
-					title: response['event']['title'],
-					desc: response['event']['desc'],
-					startTime: response['event']['startTime'],
-					endTime: response['event']['endTime'],
-					user_id: response['event']['user_id'],
-					image: response['event']['image']
-				};
-        this.count = response['count'];
-      },
-      error => {
-        console.log('Error');
-      }
-    );
+    formData.append("event_id", "0");
 
     this.api.sendRequest(formData, 'week').subscribe(
       (response) => {
@@ -83,6 +64,27 @@ export class GetticketComponent implements OnInit {
         this.eflag = response['eflag'];
         this.aflag = response['aflag'];
         this.fee = response['fee'];
+        this.event_id = response['event_id'];
+
+        formData.append("id", this.event_id.toString());
+        this.eventService.sendRequest(formData, 'get').subscribe(
+          (response) => {
+            console.log(response);
+            this.event = {
+    					id: response['event']['id'],
+    					title: response['event']['title'],
+    					desc: response['event']['desc'],
+    					startTime: response['event']['startTime'],
+    					endTime: response['event']['endTime'],
+    					user_id: response['event']['user_id'],
+    					image: response['event']['image']
+    				};
+            this.count = response['count'];
+          },
+          error => {
+            console.log('Error');
+          }
+        );
       },
       error => {
         console.log('Error');
@@ -143,7 +145,7 @@ export class GetticketComponent implements OnInit {
         //payPalShippingAddressOption: 2 // PayPalShippingAddressOptionPayPal
       })).then(() => {
 
-        let payment = new PayPalPayment(this.total, 'USD', 'Description', 'sale');
+        let payment = new PayPalPayment(this.total.toString(), 'USD', 'Description', 'sale');
 
         this.payPal.renderSinglePaymentUI(payment).then((res) => {
 
