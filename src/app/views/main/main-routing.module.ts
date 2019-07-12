@@ -10,6 +10,7 @@ import { OprofileComponent } from './oprofile';
 import { NotificationComponent } from './notification';
 
 import { PosteventComponent } from '../../dialogs/postevent';
+import { EditprofileComponent } from '../../dialogs/editprofile';
 import { CodeComponent } from '../../dialogs/code';
 import { VerifyComponent } from '../../dialogs/verify';
 
@@ -40,6 +41,10 @@ const routes: Routes = [
       {
         path: 'profile',
         component: ProfileComponent
+      },
+      {
+        path: 'profile/edit',
+        component: EditprofileComponent
       },
       {
         path: 'oprofile/:id',

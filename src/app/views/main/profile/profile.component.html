@@ -17,7 +17,7 @@
       </div>
     </div>
     <div style="width: 40%;" padding>
-      <div><img src="{{base_url}}{{user.profile}}" style="border-radius: 100%;"></div>
+      <div><img src="{{base_url}}{{user.profile}}" style="border-radius: 100%; padding: 24px;"></div>
       <div style="padding: 8px 16px; border: 1px solid black; color: #47525E; font-family: Ubuntu; font-size: 8.67px;" text-center (click)="onEditProfile();">Edit Profile</div>
     </div>
   </div>
@@ -26,13 +26,13 @@
       <div style="width: 50%; text-align: center; color: #47525E; font-family: Roboto Slab; ">
         <div style="font-size: 9.33px; font-weight: 400; line-height: 12px;">{{user.name}}</div>
         <div style="font-size: 31.67px; font-weight: 700; line-height: 41px; margin-top: 8px;">{{subs}}</div>
-        <div style="font-size: 8.67px; font-weight: 400; line-height: 11px; margin-top: 6px;">Connections</div>
+        <div style="font-size: 8.67px; font-weight: 400; line-height: 11px; margin-top: 6px;">Subscribers</div>
       </div>
       <div style="padding: 0 12%; text-align: center;">
-        <img src="{{base_url}}{{user.profile}}" style="border-radius: 100%;">
+        <img src="{{base_url}}{{user.profile}}" style="border-radius: 100%; padding: 24px;">
       </div>
     </div>
-    <div style="color: white; background-color: rgba(82, 9, 113, 0.85); border: 0.67px solid #8492A6; border-radius: 8.33px; width: 210px; padding: 6px 0; text-align: center; margin: 0 auto; margin-top: 8px;">Edit Profile</div>
+    <div style="color: white; background-color: rgba(82, 9, 113, 0.85); border: 0.67px solid #8492A6; border-radius: 8.33px; width: 210px; padding: 6px 0; text-align: center; margin: 0 auto; margin-top: 8px;" routerLink="/main/profile/edit">Edit Profile</div>
   </div>
   <div style="padding: 16px;"><ion-textarea [(ngModel)]="bio" style="border: 1px solid gray; padding: 4px; color: #47525E; font-family: Ubuntu; font-size: 9px;"></ion-textarea></div>
   <div class="flex-div">

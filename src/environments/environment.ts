@@ -9,11 +9,11 @@ export const environment = {
   },
   profile: {
     //url: "http://127.0.0.1:8000/profile/"
-    url: "http://app.e-vnn.com/profile"
+    url: "http://app.e-vnn.com/profile/"
   },
   flyer: {
     //url: "http://127.0.0.1:8000/flyers/"
-    url: "http://app.e-vnn.com/flyers"
+    url: "http://app.e-vnn.com/flyers/"
   },
   production: false
 };
