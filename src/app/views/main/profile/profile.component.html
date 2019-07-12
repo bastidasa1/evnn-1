@@ -2,7 +2,7 @@
   <div class="flex-item-center" style="border-bottom: 1px solid gray;">
     <h5 style="text-align: center; width: 100%;">{{user.username}}</h5>
   </div>
-  <div *ngIf="user.privilege === 1" class="flex-item-center">
+  <div *ngIf="user.privilege == 1" class="flex-item-center">
     <div style="width: 60%;">
       <div><h3 style="text-align: center; font-size: 8.67px; line-height: 11px;">{{user.name}}</h3></div>
       <div class="flex-div">
@@ -21,7 +21,7 @@
       <div style="padding: 8px 16px; border: 1px solid black; color: #47525E; font-family: Ubuntu; font-size: 8.67px;" text-center (click)="onEditProfile();">Edit Profile</div>
     </div>
   </div>
-  <div *ngIf="user.privilege === 2" style="padding: 12px 0;">
+  <div *ngIf="user.privilege == 2" style="padding: 12px 0;">
     <div style="display: flex; align-items: center;">
       <div style="width: 50%; text-align: center; color: #47525E; font-family: Roboto Slab; ">
         <div style="font-size: 9.33px; font-weight: 400; line-height: 12px;">{{user.name}}</div>
