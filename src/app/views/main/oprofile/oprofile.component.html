@@ -7,13 +7,13 @@
       <div text-center><label style="font-size: 9.33px; line-height: 12px;">{{name}}</label></div>
       <div>
         <div text-center><label style="color: #47525E; font-size: 50px; font-weight: 700; line-height: 41px;">{{connections}}</label></div>
-        <div text-center style="font-size: 8.67px; line-height: 11px;">Connections</div>
+        <div *ngIf="type == 1" text-center style="font-size: 8.67px; line-height: 11px;">Connections</div>
+        <div *ngIf="type == 2" text-center style="font-size: 8.67px; line-height: 11px;">Subscribers</div>
       </div>
     </div>
     <div style="width: 40%;">
       <div style="padding: 12px;"><img src="{{profileUrl}}{{profile}}" style="border-radius: 100%;"></div>
       <div class="flex-item-center" style="color: #FFFFFF; font-family: Ubuntu; font-size: 8.67px; font-weight: 400; line-height: 11px; padding: 0 16px;">
-
         <div style="width: 100%;" *ngIf="type === 1 && user.account_type === 1">
           <div *ngIf="isConnected === false" style="padding: 4px 16px; color: white; background-color: #520971; border-radius: 20px;" text-center (click)="onConnect();">Connect</div>
           <div *ngIf="isConnected === true && isApproved" style="padding: 4px 16px; color: white; background-color: #520971d8; border-radius: 20px;" text-center (click)="onConnect();">Connected</div>

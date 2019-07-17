@@ -18,7 +18,7 @@
     </div>
     <div style="width: 40%;" padding>
       <div><img src="{{base_url}}{{user.profile}}" style="border-radius: 100%; padding: 24px;"></div>
-      <div style="padding: 8px 16px; border: 1px solid black; color: #47525E; font-family: Ubuntu; font-size: 8.67px;" text-center (click)="onEditProfile();">Edit Profile</div>
+      <div style="padding: 8px 16px; border: 1px solid black; color: #47525E; font-family: Ubuntu; font-size: 8.67px;" text-center routerLink="/main/profile/edit"">Edit Profile</div>
     </div>
   </div>
   <div *ngIf="user.privilege == 2" style="padding: 12px 0;">
@@ -28,7 +28,7 @@
         <div style="font-size: 31.67px; font-weight: 700; line-height: 41px; margin-top: 8px;">{{subs}}</div>
         <div style="font-size: 8.67px; font-weight: 400; line-height: 11px; margin-top: 6px;">Subscribers</div>
       </div>
-      <div style="padding: 0 12%; text-align: center;">
+      <div style="width:50%; text-align: center;">
         <img src="{{base_url}}{{user.profile}}" style="border-radius: 100%; padding: 24px;">
       </div>
     </div>
