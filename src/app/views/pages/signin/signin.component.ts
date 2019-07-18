@@ -47,6 +47,7 @@ export class SigninComponent implements OnInit {
     formData.append('username', this.username);
     formData.append('email', this.email);
     formData.append('password', this.password);
+    formData.append('password_confirmation', this.password);
     console.log('ok');
     this.loginService.signin(formData).subscribe(
       (response) => {
