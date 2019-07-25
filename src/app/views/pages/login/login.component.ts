@@ -41,12 +41,12 @@ export class LoginComponent implements OnInit {
             profile: data['profile'],
             password: this.password
 					};
-          localStorage.setItem('currentUser', JSON.stringify(this.user));
-          console.log(this.user);
-          if (this.user.email_verified_at == null || this.user.email_verified_at == '0000-00-00 00:00:00') {
-            this.router.navigate(["/main/verify"]);
+          if (this.user.id == null || this.user.id === "undefined") this.showToast('Wrong Password!');
+          else {
+            localStorage.setItem('currentUser', JSON.stringify(this.user));
+            console.log(this.user);
+            this.router.navigate(["/main/home"]);
           }
-          else this.router.navigate(["/main/home"]);
 				},
 				error => {
           this.showToast('Wrong Password!');

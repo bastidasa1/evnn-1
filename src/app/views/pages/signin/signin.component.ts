@@ -68,7 +68,7 @@ export class SigninComponent implements OnInit {
               password: this.password
   					};
           localStorage.setItem('currentUser', JSON.stringify(this.user));
-          this.router.navigate(["/main/verify"]);
+          this.router.navigate(["/main/home"]);
         }
       },
       error => {
