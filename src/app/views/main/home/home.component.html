@@ -5,8 +5,8 @@
   <div class="title">Happening Now</div>
   <div class="border-top" *ngIf="fNow === 1">
     <div style="margin-top: 8px;">
-      <ion-slides pager="false" [options]="slideOpts" *ngFor="let nowEvent of nowEvents">
-          <ion-slide routerLink="/main/event/{{nowEvent.id}}">
+      <ion-slides pager="false" [options]="slideOpts">
+          <ion-slide *ngFor="let nowEvent of nowEvents" routerLink="/main/event/{{nowEvent.id}}">
             <div class="padding">
               <div style="height: 150px;"><img src="{{base_url}}{{nowEvent.image}}"></div>
               <div class="border" style="margin-top: 8px; font-size: 8px;">{{nowEvent.startTime.substring(nowEvent.startTime.length - 8)}} ~ {{nowEvent.endTime.substring(nowEvent.endTime.length - 8)}}</div>
