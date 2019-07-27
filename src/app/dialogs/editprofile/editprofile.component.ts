@@ -84,7 +84,7 @@ export class EditprofileComponent implements OnInit {
     toast.present();
   }
 
-  onBack() {
+  onSubmit() {
 
     let formData = new FormData();
 

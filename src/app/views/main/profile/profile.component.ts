@@ -76,12 +76,37 @@ export class ProfileComponent implements OnInit {
       });
 
       formData.append('id', this.user.id.toString());
-      
+
       this.sprofile.index(formData)
         .subscribe(res => {
           this.conn = res['connection'];
           this.subs = res['subscription'];
           console.log(this.events);
+        }, err => {
+          console.log(err);
+        });
+
+      this.sprofile.getProfile(formData)
+        .subscribe(res => {
+          this.user = {
+						id: res['id'],
+						name: res['name'],
+						email: res['email'],
+						email_verified_at: res['email_verified_at'],
+						api_token: '',
+						created_at: '',
+						updated_at: '',
+						privilege: res['privilege'],
+						username: res['username'],
+						university: res['university'],
+            bio: res['bio'],
+            profile: res['profile']
+					};
+
+          console.log(this.user);
+
+          localStorage.setItem('currentUser', JSON.stringify(this.user));
+
         }, err => {
           console.log(err);
         });

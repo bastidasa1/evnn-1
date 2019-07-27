@@ -41,7 +41,9 @@ export class LoginComponent implements OnInit {
             profile: data['profile'],
             password: this.password
 					};
-          if (this.user.id.toString() == null || this.user.id.toString() === "undefined") this.showToast('Wrong Password!');
+          console.log(data);
+          console.log(this.user);
+          if (this.user.name == null) this.showToast('Wrong Password!');
           else {
             localStorage.setItem('currentUser', JSON.stringify(this.user));
             console.log(this.user);

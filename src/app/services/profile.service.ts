@@ -11,6 +11,7 @@ export class ProfileService {
   private uploadurl = `${environment.api.url}/profile/upload`;
   private editurl = `${environment.api.url}/profile/edit`;
   private indexurl = `${environment.api.url}/profile/index`;
+  private geturl = `${environment.api.url}/profile/getProfile`;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -29,6 +30,12 @@ export class ProfileService {
   index(formData: any) {
     return this.httpClient.post(
       this.indexurl,
+      formData);
+  }
+
+  getProfile(formData: any) {
+    return this.httpClient.post(
+      this.geturl,
       formData);
   }
 }
