@@ -100,7 +100,8 @@ export class ProfileComponent implements OnInit {
 						username: res['username'],
 						university: res['university'],
             bio: res['bio'],
-            profile: res['profile']
+            profile: res['profile'],
+            password: ''
 					};
 
           console.log(this.user);
