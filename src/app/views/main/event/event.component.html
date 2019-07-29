@@ -1,5 +1,5 @@
 <div padding style="color: #47525E; font-family: Roboto Slab; font-size: 10.67px; font-weight: 400; line-height: 13.67px; text-align: left;">
-  
+
   <div class="flex-item-center">
     <div style="width: 90%; color: #520971; font-family: Montserrat; font-size: 10px; font-weight: 400; line-height: 13px; text-align: left;" routerLink="/main/oprofile/{{event.user_id}}">{{username}}</div>
     <div style="width: 10%;"><img src="assets/images/select.png" style="opacity: .42;"></div>
@@ -11,7 +11,8 @@
     <div style="width: 85%;" class="flex-item-center">
       <img src="assets/images/hand.png" class="image-item" (click)="onLike();">
       <img src="assets/images/message.png" class="image-item" style="margin: 0 18px;" (click)="onComment();">
-      <img src="assets/images/plus.png" class="image-item" (click)="onAddEvent();">
+      <img src="assets/images/plus.png" class="image-item" (click)="onAddEvent();" *ngIf="is_calendar == 0">
+      <img src="assets/images/plus_sel.png" class="image-item" (click)="onDelCalendar();" *ngIf="is_calendar == 1">
     </div>
     <div class="flex-item-center">
       <div style="background-image: url(assets/images/captummre.png); width: 75px; height: 50px; background-size: cover; padding-top: 15px; padding-left: 8px; padding-bottom: 4px;" class="flex-item-center">

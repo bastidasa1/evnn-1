@@ -30,6 +30,7 @@ export class EventComponent implements OnInit {
   comments: Comment[] = [];
 
   is_comment: number;
+  is_calendar: number;
 
   constructor(private route: ActivatedRoute, private api: EventService, private loginService: LoginService, public toastController: ToastController)
   {
@@ -42,6 +43,19 @@ export class EventComponent implements OnInit {
     this.event_id = id;
 
     let formData = new FormData();
+
+    formData.append('user_id', this.user.id.toString());
+    formData.append('event_id', this.event_id);
+
+    this.api.sendRequest(formData, 'isCalendar').subscribe(
+      (response) => {
+        this.is_calendar = response['success'];
+      },
+      error => {
+        console.log('Error');
+      }
+    );
+
     formData.append("id", id.toString());
 
     this.api.sendRequest(formData, 'get').subscribe(
@@ -132,9 +146,27 @@ export class EventComponent implements OnInit {
       (response) => {
         if (response['success'] == true) {
           this.showToast('Successfuly added');
+          this.is_calendar = 1;
         }
         else {
           this.showToast('Already added');
+        }
+      },
+      error => {
+        console.log('Error');
+      }
+    );
+  }
+
+  onDelCalendar() {
+    let formData = new FormData();
+    formData.append('user_id', this.user.id.toString());
+    formData.append('event_id', this.event_id);
+    this.api.sendRequest(formData, 'removeCalendar').subscribe(
+      (response) => {
+        if (response['success'] == true) {
+          this.showToast('Successfuly removed');
+          this.is_calendar = 0;
         }
       },
       error => {
