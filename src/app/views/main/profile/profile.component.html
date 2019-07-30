@@ -47,7 +47,7 @@
 
   <div>
     <div style="display: flex; margin-top: 12px; justify-content: space-between; flex-flow: row wrap; padding: 0 4px; " *ngIf="isMode === 0">
-      <div *ngFor="let event of events" style="width: 30%;">
+      <div *ngFor="let event of events" style="width: 30%;" routerLink="/main/event/{{event.event_id}}">
         <div style="text-align: center; border: 1px solid gray;"><label style="font-size: 9px;">{{ event.day }}</label></div>
         <img src="{{imgUrl}}{{event.image}}" style="width: 100%; height: 130px;">
       </div>

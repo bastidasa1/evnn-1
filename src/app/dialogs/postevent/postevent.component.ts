@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
+import { Router } from "@angular/router";
 
 import { LoginService } from '../../services/login.service';
 import { EventService } from '../../services/event.service';
@@ -19,7 +20,7 @@ export class PosteventComponent implements OnInit {
   description: string;
   file: any;
 
-  constructor(private fileService: EventService, private loginService: LoginService, public toastController: ToastController) { }
+  constructor(private fileService: EventService, private loginService: LoginService, public toastController: ToastController, private router: Router) { }
 
   ngOnInit() {}
 
@@ -57,6 +58,7 @@ export class PosteventComponent implements OnInit {
     this.fileService.sendRequest(formData, 'post').subscribe(
       (response) => {
         this.showToast('Event ' + response + ' saved!');
+        this.router.navigate(["/main/profile"]);
       });
   }
 

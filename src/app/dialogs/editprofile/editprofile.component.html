@@ -33,6 +33,9 @@
       <ion-select-option  *ngFor="let item of university" value="{{ item.id }}">{{ item.name }}</ion-select-option>
     </ion-select>
   </div>
+  <div style="margin-top: 8px; text-decoration: underline; color: #707070;" routerLink="/login">
+    Log off
+  </div>
   <div style="margin-top: 8px;">
     <div style="font-size: 16px; line-height: 20.67px; background-color: #bb69b5; color: white; width: 60%; text-align: center; margin: 0 auto; padding: 8px; margin-top: 24px;" (click)="onSubmit();">
       Save

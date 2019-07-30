@@ -18,6 +18,8 @@ export class EventService {
   private addtolisturl = `${environment.api.url}/event/add`;
   private isCalendarUrl = `${environment.api.url}/event/isCalendar`;
   private removeCalendarUrl = `${environment.api.url}/event/removeCalendar`;
+  private isLikeUrl = `${environment.api.url}/event/isLike`;
+  private removeLikeUrl = `${environment.api.url}/event/removeLike`;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -43,6 +45,10 @@ export class EventService {
           url = this.isCalendarUrl;
       } else if (func == 'removeCalendar') {
           url = this.removeCalendarUrl;
+      } else if (func == 'isLike') {
+          url = this.isLikeUrl;
+      } else if (func == 'removeLike') {
+          url = this.removeLikeUrl;
       }
       return this.httpClient.post(url, formData);
   }

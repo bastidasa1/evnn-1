@@ -31,6 +31,7 @@ export class EventComponent implements OnInit {
 
   is_comment: number;
   is_calendar: number;
+  is_like: number;
 
   constructor(private route: ActivatedRoute, private api: EventService, private loginService: LoginService, public toastController: ToastController)
   {
@@ -50,6 +51,15 @@ export class EventComponent implements OnInit {
     this.api.sendRequest(formData, 'isCalendar').subscribe(
       (response) => {
         this.is_calendar = response['success'];
+      },
+      error => {
+        console.log('Error');
+      }
+    );
+
+    this.api.sendRequest(formData, 'isLike').subscribe(
+      (response) => {
+        this.is_like = response['success'];
       },
       error => {
         console.log('Error');
@@ -99,6 +109,7 @@ export class EventComponent implements OnInit {
         if (response['success'] == true) {
           console.log('success');
           this.count = response['count'];
+          this.is_like = 1;
         }
         else {
           this.showToast('Already liked');
@@ -127,6 +138,29 @@ export class EventComponent implements OnInit {
       (response) => {
         if (response['success'] == true) {
           console.log('success');
+
+          formData.append("id", this.event_id.toString());
+
+          this.api.sendRequest(formData, 'get').subscribe(
+            (response) => {
+              console.log(response);
+              this.event = {
+      					id: response['event']['id'],
+      					title: response['event']['title'],
+      					desc: response['event']['desc'],
+      					startTime: response['event']['startTime'],
+      					endTime: response['event']['endTime'],
+      					user_id: response['event']['user_id'],
+      					image: response['event']['image']
+      				};
+              this.username = response['event']['user_name'];
+              this.count = response['count'];
+              this.comments = response['comments'];
+            },
+            error => {
+              console.log('Error');
+            }
+          );
         }
         else {
           //this.showToast('Already liked');
@@ -167,6 +201,24 @@ export class EventComponent implements OnInit {
         if (response['success'] == true) {
           this.showToast('Successfuly removed');
           this.is_calendar = 0;
+        }
+      },
+      error => {
+        console.log('Error');
+      }
+    );
+  }
+
+  onDelLike() {
+    let formData = new FormData();
+    formData.append('user_id', this.user.id.toString());
+    formData.append('event_id', this.event_id);
+    this.api.sendRequest(formData, 'removeLike').subscribe(
+      (response) => {
+        if (response['success'] == true) {
+          this.showToast('Successfuly removed');
+          this.is_like = 0;
+          this.count = this.count - 1;
         }
       },
       error => {
