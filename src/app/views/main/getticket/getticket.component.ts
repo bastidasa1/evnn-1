@@ -77,7 +77,8 @@ export class GetticketComponent implements OnInit {
     					startTime: response['event']['startTime'],
     					endTime: response['event']['endTime'],
     					user_id: response['event']['user_id'],
-    					image: response['event']['image']
+    					image: response['event']['image'],
+              day: ""
     				};
             this.count = response['count'];
           },

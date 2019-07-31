@@ -6,4 +6,5 @@ export class EventType {
   endTime: string;
   user_id: number;
   image: string;
+  day: string;
 }

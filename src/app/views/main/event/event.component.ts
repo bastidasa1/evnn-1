@@ -78,7 +78,8 @@ export class EventComponent implements OnInit {
 					startTime: response['event']['startTime'],
 					endTime: response['event']['endTime'],
 					user_id: response['event']['user_id'],
-					image: response['event']['image']
+					image: response['event']['image'],
+          day: ""
 				};
         this.username = response['event']['user_name'];
         this.count = response['count'];
@@ -151,7 +152,8 @@ export class EventComponent implements OnInit {
       					startTime: response['event']['startTime'],
       					endTime: response['event']['endTime'],
       					user_id: response['event']['user_id'],
-      					image: response['event']['image']
+      					image: response['event']['image'],
+                day: ""
       				};
               this.username = response['event']['user_name'];
               this.count = response['count'];
