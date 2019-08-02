@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 import { ToastController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 
@@ -32,8 +33,9 @@ export class EventComponent implements OnInit {
   is_comment: number;
   is_calendar: number;
   is_like: number;
+  is_mine: number;
 
-  constructor(private route: ActivatedRoute, private api: EventService, private loginService: LoginService, public toastController: ToastController)
+  constructor(private route: ActivatedRoute, private api: EventService, private loginService: LoginService, public toastController: ToastController, private router: Router)
   {
     this.is_comment = 0;
   }
@@ -47,6 +49,16 @@ export class EventComponent implements OnInit {
 
     formData.append('user_id', this.user.id.toString());
     formData.append('event_id', this.event_id);
+
+    this.api.sendRequest(formData, 'isMine').subscribe(
+      (response) => {
+        this.is_mine = response['success'];
+        console.log(response['success']);
+      },
+      error => {
+        console.log('Error');
+      }
+    );
 
     this.api.sendRequest(formData, 'isCalendar').subscribe(
       (response) => {
@@ -221,6 +233,22 @@ export class EventComponent implements OnInit {
           this.showToast('Successfuly removed');
           this.is_like = 0;
           this.count = this.count - 1;
+        }
+      },
+      error => {
+        console.log('Error');
+      }
+    );
+  }
+
+  onDelEvent() {
+    let formData = new FormData();
+    formData.append('event_id', this.event_id);
+    this.api.sendRequest(formData, 'delEvent').subscribe(
+      (response) => {
+        if (response['success'] == 1) {
+          this.showToast('Successfuly removed');
+          this.router.navigate(["/main/profile"]);
         }
       },
       error => {
