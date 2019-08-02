@@ -33,6 +33,15 @@ export class OprofileComponent implements OnInit {
   isConnected: boolean = true;
   isApproved: boolean = false;
 
+  monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+  convertFormat(str:string): string {
+    let result: string;
+    var splitted = str.split("-");
+    result = this.monthNames[+splitted[1]] + ' ' + splitted[2] + ',' + splitted[0];
+    return result;
+  }
+
   constructor(private route: ActivatedRoute, private api: OprofileService, private eventService: EventService, private loginService: LoginService) { }
 
   ngOnInit() {
@@ -45,6 +54,10 @@ export class OprofileComponent implements OnInit {
     this.eventService.sendRequest(formData, 'getorigin')
       .subscribe(res => {
         this.events = res as EventType[];
+        let i = 0;
+        for (i = 0; i < this.events.length; i++) {
+          this.events[i].day = this.convertFormat(this.events[i].day);
+        }
         console.log(this.events);
       }, err => {
         console.log(err);
