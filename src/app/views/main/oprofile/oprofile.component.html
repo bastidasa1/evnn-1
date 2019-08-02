@@ -16,12 +16,12 @@
       <div class="flex-item-center" style="color: #FFFFFF; font-family: Ubuntu; font-size: 8.67px; font-weight: 400; line-height: 11px; padding: 0 16px;">
         <div style="width: 100%;" *ngIf="type == 1 && user.privilege == 1">
           <div *ngIf="isConnected == false" style="padding: 4px 16px; color: white; background-color: #520971; border-radius: 20px;" text-center (click)="onConnect();">Connect</div>
-          <div *ngIf="isConnected == true && isApproved" style="padding: 4px 16px; color: white; background-color: #520971d8; border-radius: 20px;" text-center (click)="onConnect();">Connected</div>
-          <div *ngIf="isConnected == true && !isApproved" style="padding: 4px 16px; color: white; background-color: #520971d8; border-radius: 20px;" text-center (click)="onConnect();">Pending</div>
+          <div *ngIf="isConnected == true && isApproved == true" style="padding: 4px 16px; color: white; background-color: #520971d8; border-radius: 20px;" text-center (click)="onConnect();">Connected</div>
+          <div *ngIf="isConnected == true && isApproved == false" style="padding: 4px 16px; color: white; background-color: #520971d8; border-radius: 20px;" text-center (click)="onConnect();">Pending</div>
         </div>
         <div style="width: 100%;" *ngIf="type == 2">
-          <div *ngIf="isSubscribed === false" style="padding: 4px 16px; color: white; background-color: #520971; border-radius: 20px;" text-center (click)="onSubscribe();">Subscribe</div>
-          <div *ngIf="isSubscribed === true" style="padding: 4px 16px; color: white; background-color: #520971d8; border-radius: 20px;" text-center (click)="onSubscribe();">Subscribed</div>
+          <div *ngIf="isSubscribed == false" style="padding: 4px 16px; color: white; background-color: #520971; border-radius: 20px;" text-center (click)="onSubscribe();">Subscribe</div>
+          <div *ngIf="isSubscribed == true" style="padding: 4px 16px; color: white; background-color: #520971d8; border-radius: 20px;" text-center (click)="onSubscribe();">Subscribed</div>
         </div>
       </div>
     </div>
