@@ -6,7 +6,7 @@
     <ion-slides [options]="slideOpts2">
       <ion-slide *ngFor="let topUser of topUsers">
         <div style="width: 100%;" routerLink="/main/oprofile/{{topUser.id}}">
-          <img src="{{base_profile_url}}{{topUser.profile}}" style="padding: 8px; border-radius: 100%; height: 80px;">
+          <img src="{{base_profile_url}}{{topUser.profile}}" style="padding: 8px; border-radius: 100%; height: 70px;">
           <div style="color: #47525E; font-size: 8.33px; line-height: 10.67px;text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">{{topUser.name}}</div>
         </div>
       </ion-slide>
@@ -28,7 +28,7 @@
   <div style="margin-top: 12px;">
     <label style="margin-left: 8px; font-size: 11.67px; line-height: 15px;">Explore New Events</label>
     <div class="flex-div" style="justify-content: space-between; flex-direction: column; flex-wrap: wrap;" [ngStyle]="{'height': height}">
-        <img *ngFor="let newEvent of newEvents" src="{{base_flyer_url}}{{newEvent.image}}" style="width: 49%; max-height: 200px; padding: 8px;" routerLink="/main/event/{{newEvent.id}}">
+        <img *ngFor="let newEvent of newEvents" src="{{base_flyer_url}}{{newEvent.image}}" style="width: 49%; max-height: 220px; padding: 8px;" routerLink="/main/event/{{newEvent.id}}">
     </div>
   </div>
 </div>
