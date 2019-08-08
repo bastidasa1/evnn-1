@@ -8,9 +8,10 @@ import { PagesRoutingModule } from './pages-routing.module';
 
 import { LoginComponent } from './login';
 import { SigninComponent } from './signin';
+import { TermComponent } from './term';
 
 @NgModule({
-  declarations: [LoginComponent, SigninComponent],
+  declarations: [LoginComponent, SigninComponent, TermComponent],
   imports: [
     FormsModule,
     CommonModule,
