@@ -38,7 +38,7 @@ export class OprofileComponent implements OnInit {
   convertFormat(str:string): string {
     let result: string;
     var splitted = str.split("-");
-    result = this.monthNames[+splitted[1]] + ' ' + splitted[2] + ',' + splitted[0];
+    result = this.monthNames[+splitted[1] - 1] + ' ' + splitted[2] + ',' + splitted[0];
     return result;
   }
 

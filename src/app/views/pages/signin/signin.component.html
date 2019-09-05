@@ -13,7 +13,9 @@
     <ion-input class="space-top-12" placeholder="Full Name" [(ngModel)]="name" style="padding-left: 8px !important;"></ion-input>
     <ion-input class="space-top-12" placeholder="User Name" [(ngModel)]="username" style="padding-left: 8px !important;"></ion-input>
     <ion-input class="space-top-12" placeholder="University Email" [(ngModel)]="email" style="padding-left: 8px !important;"></ion-input>
+    <label style="color: red; padding-left: 8px; margin-top: 8px;">Must be .edu email (ex. name@school.edu)</label>
     <ion-input class="space-top-12" placeholder="Password" [(ngModel)]="password" type="password" style="padding-left: 8px !important;"></ion-input>
+    <label style="color: red; padding-left: 8px; margin-top: 8px;">Password must have at least one capital letter and one number</label>
   </div>
   <div class="link-item center" style="margin-top: 24px; width: 60%; color: #FFFFFF; font-family: Ubuntu; font-size: 13.33px; font-weight: 400; line-height: 17.33px;" (click)="onSignin();">
     Sign in
